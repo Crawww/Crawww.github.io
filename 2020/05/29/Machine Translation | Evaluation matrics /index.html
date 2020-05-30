@@ -18,7 +18,7 @@
 
 
 
-  <meta name="keywords" content="Korean, nlvi" />
+  <meta name="keywords" content="Notes for MTT, nlvi" />
 
 
 <link rel="apple-touch-startup-image" media="(device-width: 375px)" href="assets/apple-launch-1125x2436.png">
@@ -80,7 +80,7 @@
 }
 </style>
 
-  <title> Korean Grammar | 가설 & 조건 - I · Craww </title>
+  <title> Machine Translation | Evaluation Matrics · Craww </title>
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
   <div class="container">
@@ -232,136 +232,117 @@
       </div>
       <h2 class="post-title syuanpi fadeInRightShort back-2">
         
-          Korean Grammar | 가설 & 조건 - I
+          Machine Translation | Evaluation Matrics
         
       </h2>
     </header>
     <div class="post-content syuanpi fadeInRightShort back-3">
       
         <p margin=20px style="line-height: 20px;text-indent:0em"  >
-    <font size="4" face="Verdana" color="#8F8699">>> 
-    表假设/条件 거든 | 거들랑 | 고 나면 | 고 보니 & 고 보면 | 기만 하면(되다) </font>
+    <font size="4" face="Verdana" color="#8F8699">>> Evaluation of machine translation</font>
 </p>
-<img src="/images/k1.png"/>
+<img src="/images/evalmatric.png">
 
 <a id="more"></a>
 
+<h3 id="Subjective-evaluation"><a href="#Subjective-evaluation" class="headerlink" title="Subjective evaluation"></a><font color="#86679E">Subjective evaluation</font></h3><h5 id="The-ALPAC-report-gt-gt-Pierce-et-al-1966"><a href="#The-ALPAC-report-gt-gt-Pierce-et-al-1966" class="headerlink" title="The ALPAC report &gt;&gt;  Pierce et al., 1966"></a><font color="#8F8699">The ALPAC report &gt;&gt;</font>  <a href="http://www.mt-archive.info/ALPAC-1966.pdf" target="_blank" rel="noopener">Pierce et al., 1966</a></h5><ul>
+<li><p>Two major recommendations:</p>
+<ul>
+<li><p>Fund research in (pure) linguistics;</p>
+</li>
+<li><p>Fund research in how to reduce translation time and how to reduce translation costs.</p>
+</li>
+</ul>
+<p>​       由于当时机器翻译才刚起步，需要投入大量的财力人力来研究，这两项建议导致投资者中止了所有投入，严重阻碍了机器翻译在美国的发展（欧洲、亚洲似乎影响不大）</p>
+<p>有几篇关于这个report的负面评论：</p>
+<ol>
+<li><a href="http://www.hutchinsweb.me.uk/MTNI-14-1996.pdf" target="_blank" rel="noopener">John Hutchins, ‘ALPAC: the (in)famous report’, MT News International 14:9-12, June 1996</a></li>
+<li><a href="http://www.mt-archive.info/MTS-1995-Boitet.pdf" target="_blank" rel="noopener">Christian Boitet, Factors for success (and failure) in Machine Translation – some lessons of the first 50 years: Fifth Machine Translation Summit, Luxemburg, 1995.</a></li>
+<li>Zbigniew Pankowicz, Commentary on ALPAC Report, “Language and Machines; Computers in Translation and Linguistics”, 1967.</li>
+</ol>
+</li>
+<li><p>Two criteria</p>
+<ul>
+<li>Intelligibility / Fluency<ul>
+<li>How natural is a translation? How fluent? How close to what native speakers of the target language would say?</li>
+<li>Scale: 1~9 and 9 is the most intelligible</li>
+</ul>
+</li>
+<li>Fidelity / Adequacy<ul>
+<li>How much of the information contained in a text is carried over through translation? Is there some piece of information missing in the translation? Was some information added by translation?</li>
+<li>Scale: 0~9 </li>
+<li>1~9 is from less infomative to extremely (over) informative. 0 is the best I think</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Objective-evaluation"><a href="#Objective-evaluation" class="headerlink" title="Objective evaluation"></a><font color="#86679E">Objective evaluation</font></h3><h5 id="mWER"><a href="#mWER" class="headerlink" title="mWER"></a>mWER</h5><p><strong><font color="#8F8699">multiple reference Word Error Rate &gt;&gt;</font></strong>  <a href="https://www-i6.informatik.rwth-aachen.de/publications/download/340/Niessen-LREC-2000.pdf" target="_blank" rel="noopener">(Niessen et al., 2000)</a></p>
+<ul>
+<li><p>第一次提出用distance来evaluate的是 <a href="http://www.mt-archive.info/ISSCO-1991-Thompson.pdf" target="_blank" rel="noopener">(Thompson, 1991)</a></p>
+</li>
+<li><p>multiple reference WER 定义为:</p>
+<p>The minimal ratio of edit distance between the candidate translation and the reference over the length of the reference.</p>
+<ol>
+<li>Compute the Levenshtein edit distance (insertion, deletion, substitution all have a cost of 1) between the candidate sentence and each reference</li>
+<li>Divide by the length of the reference</li>
+<li>Take the minimum over all values for all references</li>
+</ol>
+<p>e.g.  &ensp;Candidate:  I <font color="#86679E">would like</font> a room with a view <font color="#86679E">on the sea. </font></p>
+<p>&emsp;&emsp;&ensp;Reference 1:  <font color="#86679E">Can</font> I <font color="#86679E">have</font> a room with a view<font color="#86679E">?</font><br>&emsp;&emsp;&ensp;Reference 2:  <font color="#86679E">Do you have</font> a room with a <font color="#86679E">sea</font> view<font color="#86679E">?</font></p>
+<p>&emsp;&emsp;&ensp;Dist (C,R1) = 7 / 9<br>&emsp;&emsp;&ensp;Dist (C,R2) = 8 / 10</p>
+<p>&emsp;&emsp;&ensp;mWER = min (7 / 9, 8 / 10) = 7 / 9 = 0.777</p>
+</li>
+</ul>
+<h5 id="TER"><a href="#TER" class="headerlink" title="TER"></a>TER</h5><p><strong><font color="#8F8699">Translation Edit Rate &gt;&gt;</font></strong>  <a href="https://www.cs.umd.edu/~snover/pub/amta06/ter_amta.pdf" target="_blank" rel="noopener">(Snover et al., 2006)</a></p>
+<ul>
+<li><p>TER is commonly used when MT output is produced for <font color="#86679E">post-editing</font>, as it can help to estimate the amount of work your translators will have to do to bring the MT up to <font color="#86679E">human quality.</font>.</p>
+</li>
+<li><p>TER is defined as the <font color="#86679E">minimum number of edits</font> needed to change a hypothesis so that it exactly matches one of the references, normalized by the <font color="#86679E">average length of the references</font>. Since we are concerned with the minimum number of edits needed to modify the hypothesis, we only measure the number of edits to the <font color="#86679E">closest reference</font> (as measured by the TER score). Specifically: </p>
+<center><img src="/images/ter.png" width="device-width" align="middle"></center>
 
-
-<h3 id="거든"><a href="#거든" class="headerlink" title="#거든"></a><font color="#86679E">#거든</font></h3><p><strong><font color="#8F8699">접속</font></strong>    &emsp;동사 어간  / 동사 어간 어간 / 체언+ 이 / -았 / 었 / 였 / 겠 /시 + 거든</p>
-<p><strong><font color="#8F8699">설명 </font></strong>   &emsp;接续词尾  表假定条件  = “<strong><font color="#86679E">如果</font></strong>”、“<strong><font color="#86679E">要是</font></strong>”</p>
-<p><strong><font color="#8F8699">주의 </font></strong>   &emsp;终结谓语一般使用表示祈使的<strong><font color="#86679E">命令式</font></strong>或<strong><font color="#86679E">共动式</font></strong></p>
-<p><strong><font color="#8F8699">예문 </font></strong> &emsp; </p>
-<ul>
-<li><p>값이 비싸<strong><font color="#86679E">거든</font></strong> 사지 맙시다.  </p>
-<p>如果价格贵，咱就别买了。</p>
-</li>
-<li><p>호시 길이 미끄럽<strong><font color="#86679E">거든</font></strong> 지하철을 타거가자.  </p>
-<p>如果路滑，我们就坐地铁去吧。</p>
-</li>
-<li><p>잘못했<strong><font color="#86679E">거든</font></strong> 진심으로 사과해야합니다. </p>
-<p>如果做错了事，就应该真诚地道歉。</p>
-</li>
-<li><p>일찍 퇴근하시<strong><font color="#86679E">거든</font></strong> 우리 집에 잠깐 들러주세요. </p>
-<p>如果下班早的话，请您到我家来一趟吧。</p>
-</li>
-<li><p>만일 그것에 가<strong><font color="#86679E">거든</font></strong> 어머니와 그사정을 잘 이야기해 주세요. </p>
-<p>要是到那个地方，请把这件事情好好和母亲解释一下吧。</p>
 </li>
 </ul>
-<h3 id="거들랑"><a href="#거들랑" class="headerlink" title="#거들랑"></a><font color="#86679E">#거들랑</font></h3><p><strong><font color="#8F8699">접속</font></strong>      &ensp;&ensp;동사 어간 / 동사 어간 어간 / 체언+ 이 / -았 / 었 / 였 / 겠 /시 + 거들랑</p>
-<p><strong><font color="#8F8699">설명 I </font></strong>  &ensp;由<strong><font color="#86679E">거든</font></strong>和<strong><font color="#86679E">을랑</font></strong> (表强调) 组合而成的接续词尾 常用于<strong><font color="#86679E">口语</font></strong>  表假定条件  相当于<strong><font color="#86679E">如果</font></strong> <strong><font color="#86679E">要是</font></strong></p>
-<p><strong><font color="#8F8699">예문 I </font></strong> &emsp; </p>
+<h5 id="BLEU"><a href="#BLEU" class="headerlink" title="BLEU"></a>BLEU</h5><p><strong><font color="#8F8699">BiLingual Evaluation Understudy &gt;&gt;  <a href="https://www.aclweb.org/anthology/P02-1040.pdf" target="_blank" rel="noopener">(Papineni &amp; al., 2002)</a></font></strong> </p>
 <ul>
-<li><p>꽃이 피<strong><font color="#86679E">거들랑</font></strong> 공원에 갑시다.  </p>
-<p>如果花开了，我们就去公园吧。</p>
+<li><p>BLEU is defined as the product of a <font color="#86679E">brevity penalty</font> to penalise shorter candidate sentences and the <font color="#86679E">geometric mean</font> of all <font color="#86679E">n-gram precisions</font> up to a certain order (<font color="#86679E">usually 4</font>)</p>
 </li>
-<li><p>소식이 없<strong><font color="#86679E">거들랑</font></strong>  희소식인 줄 알아요.  </p>
-<p>没有消息就是好消息。</p>
+<li><p>Brevity Penalty (BP)</p>
+<center><img src="/images/bp.png"></center>
 </li>
-<li><p>중국에 돌아가<strong><font color="#86679E">거들랑</font></strong>  나에게 전화를 해주세요. </p>
-<p>如果回中国的话，请给我打个电话。</p>
+<li><p>Modified n-gram precision</p>
+<center><img src="/images/ngram.png" /></center>
 </li>
-<li><p>문제가 생기<strong><font color="#86679E">거들랑</font></strong>  선생님께 여쭤 보세요. </p>
-<p>如果有问题，请问问老师吧。</p>
+<li><p>BLEU score</p>
+<center><img src="/images/bleu.png" ></center>
 </li>
-<li><p>그도 갈테니 부탁할 일이 있<strong><font color="#86679E">거들랑</font></strong>  그에게 말하세요.</p>
-<p>他也要去，要是有什么拜托的事，就跟他说吧。</p>
+<li><p>E.g.  &ensp;Candidate:  The cat eats the little mouse in the little garden.</p>
+<p>&emsp;&emsp;&ensp;Reference 1: The cat eats the small mouse in the little yard.<br>&emsp;&emsp;&ensp;Reference 2:  The small mouse is eaten by the cat in the small yard.</p>
+<p>&emsp;&emsp;&ensp;P1 = 9 / 11<br>&emsp;&emsp;&ensp;P2 = 5 / 10<br>&emsp;&emsp;&ensp;P2 = 4 / 9<br>&emsp;&emsp;&ensp;P2 = 2 / 8</p>
+<p>&emsp;&emsp;&ensp;BLEU = 46.17 (over 100 points) </p>
+</li>
+<li><p><a href="https://github.com/mjpost/sacreBLEU" target="_blank" rel="noopener">sacreBLEU</a></p>
+<p><font color="#86679E">A tool</font> which allows researchers to download standard testbeds for machine translation and run BLEU on state-of-the-art results and their own results.<br>In this way, scores can be compared in a reliable and <font color="#86679E">reproducible </font>&gt;way.</p>
 </li>
 </ul>
-<p><strong><font color="#8F8699">설명 II </font></strong>&ensp; 表示推理的条件 能与<strong><font color="#86679E">(으)면</font></strong>和<strong><font color="#86679E">거든</font></strong> 通用，常与时制词尾<strong><font color="#86679E">-았/었/였</font></strong>连用</p>
-<p><strong><font color="#8F8699">예문  II</font></strong></p>
+<h5 id="NIST"><a href="#NIST" class="headerlink" title="NIST"></a>NIST</h5><ul>
+<li><strong>NIST</strong> is a method for evaluating the quality of text which has been translated using <a href="https://en.wikipedia.org/wiki/Machine_translation" target="_blank" rel="noopener">machine translation</a>. Its name comes from the US <a href="https://en.wikipedia.org/wiki/National_Institute_of_Standards_and_Technology" target="_blank" rel="noopener">National Institute of Standards and Technology</a>.</li>
+<li>It is based on the <a href="https://en.wikipedia.org/wiki/Bilingual_evaluation_understudy" target="_blank" rel="noopener">BLEU</a> metric, but with some alterations. Where BLEU simply calculates n-gram precision adding equal weight to each one, NIST also calculates how informative a particular n-gram is. That is to say when a correct n-gram is found, the rarer that n-gram is, the more weight it will be given.</li>
+</ul>
+<h5 id="RIBES"><a href="#RIBES" class="headerlink" title="RIBES"></a>RIBES</h5><p><strong><font color="#8F8699">Rank-based Intuitive Bilingual Evaluation Score &gt;&gt;  <a href="https://www.aclweb.org/anthology/D10-1092.pdf" target="_blank" rel="noopener">(Hideki et al., 2010)</a></font></strong> &amp; <a href="http://www.kecl.ntt.co.jp/icl/lirg/ribes/" target="_blank" rel="noopener">available here</a></p>
 <ul>
-<li><p>구경을 가겠<strong><font color="#86679E">거들랑</font></strong> 빨래준비하세요.  </p>
-<p>要去参观的话就快点准备吧。</p>
+<li>better takes into account the order of words to be sensitive to differences in syntax between languages</li>
+</ul>
+<h5 id="METEOR"><a href="#METEOR" class="headerlink" title="METEOR"></a>METEOR</h5><ul>
+<li><p><a href="http://www.cs.cmu.edu/~alavie/METEOR/" target="_blank" rel="noopener">http://www.cs.cmu.edu/~alavie/METEOR/</a></p>
 </li>
-<li><p>틀린것을 알았<strong><font color="#86679E">거들랑</font></strong>  반성을 해야지요.  </p>
-<p>知道错了就该好好反省。</p>
-</li>
-<li><p>이론적으로 알았<strong><font color="#86679E">거들랑</font></strong>  살천에 옮겨야 할 것압니다. </p>
-<p>理论上懂了就该付诸实践。</p>
-</li>
-<li><p>잘못을 깨달았<strong><font color="#86679E">거들랑</font></strong>  제땨에 고쳐야 합나다. </p>
-<p>意识到错误就该及时改正。</p>
+<li><p>Tries to take synonymy into account; needs extra knowledge data</p>
 </li>
 </ul>
-<h3 id="고-나면"><a href="#고-나면" class="headerlink" title="#고 나면"></a><font color="#86679E">#고 나면</font></h3><p><strong><font color="#8F8699">접속</font></strong>   &emsp;동사 어간 + 고 나면</p>
-<p><strong><font color="#8F8699">설명 </font></strong>  &emsp;由表示前后顺序的<strong><font color="#86679E">고 나다</font></strong>和表示条件的<strong><font color="#86679E">면</font></strong> 组合而成的句型 常用于<strong><font color="#86679E">口语</font></strong>  表示如果满足前句就会发生后句</p>
-<p><strong><font color="#8F8699">예문 </font></strong> &emsp; </p>
-<ul>
-<li><p>내 얘기를 듣<strong><font color="#86679E">고 나면</font></strong> 이해할 거에요.  </p>
-<p>听了我的话你就理解了。</p>
-</li>
-<li><p>이 음악을 듣<strong><font color="#86679E">고 나면</font></strong> 마음이 편안해질 겁니다.  </p>
-<p>听了这首歌之后，心情会变平静的。</p>
-</li>
-<li><p>이 책을 읽<strong><font color="#86679E">고 나면</font></strong> 생각이 달라질 거에요.  </p>
-<p>读完这本书之后，想法会有所改变的。</p>
-</li>
-<li><p>비가오<strong><font color="#86679E">고 나면</font></strong> 날씨가 좀 서늘해지 겠지요.  </p>
-<p>下了雨之后天气会变凉一点吧。</p>
-</li>
-</ul>
-<h3 id="고-보니-고-보면"><a href="#고-보니-고-보면" class="headerlink" title="#고 보니 / 고 보면"></a><font color="#86679E">#고 보니 / 고 보면</font></h3><p><strong><font color="#8F8699">접속</font></strong>    &emsp;동사 어간 + 고 보니 / 고 보면</p>
-<p><strong><font color="#8F8699">설명 </font></strong>   &emsp;由动词<strong><font color="#86679E">보다</font></strong>和表示条件的<strong><font color="#86679E">니 / 면</font></strong> 组合而成的句型 表示前项动作完成之后，才发现或明白后项</p>
-<p><strong><font color="#8F8699">예문 </font></strong> &emsp; </p>
-<ul>
-<li><p>명철이의 이야기을 듣<strong><font color="#86679E">고 보니</font></strong> 내 가 너무 내 생각만 한 것 같았다.</p>
-<p>听了明哲的一席话，我觉得我太自私了。</p>
-</li>
-<li><p>알<strong><font color="#86679E">고 보니</font></strong> 사고을 낸 차가 바로 동생 친구의 차였다.</p>
-<p>经了解，发生事故的是弟弟朋友的车。</p>
-</li>
-<li><p>사실 알<strong><font color="#86679E">고 보면</font></strong> 이 아이는 아주 착한 아이랍니다.</p>
-<p>事实上你会发现这孩子很善良。</p>
-</li>
-<li><p>진짜 가까게 사귀<strong><font color="#86679E">고 보면</font></strong>  하나도 안 무서워요.</p>
-<p>亲密交往后会觉得一点都不可怕。</p>
-</li>
-<li><p>오래 접촉하<strong><font color="#86679E">고 보면</font></strong> 상대방 의 우점과 결점이 보인다.</p>
-<p>长期接触后，对方的优缺点会显现出来。</p>
-</li>
-</ul>
-<h3 id="기만-하면-되다"><a href="#기만-하면-되다" class="headerlink" title="#기만 하면 (되다)"></a><font color="#86679E">#기만 하면 (되다)</font></h3><p><strong><font color="#8F8699">접속</font></strong>    &emsp;동사 어간/ / 동사 어간 어간 / 체언 이 + 기만 하면 (되다)</p>
-<p><strong><font color="#8F8699">설명 </font></strong>   &emsp;表示<strong><font color="#86679E">只要……就</font></strong>，<strong><font color="#86679E">一……就</font></strong></p>
-<p><strong><font color="#8F8699">예문 </font></strong> &emsp; </p>
-<ul>
-<li><p>이번 주말 전으로 완성하 기만 하면된다.</p>
-<p>只要这周末之前完成就行了。</p>
-</li>
-<li><p>8시 전에 도착하기만 하면 문제없다.</p>
-<p>只要八点之前能到就没问题。</p>
-</li>
-<li><p>이것보다 좀 더 크기만 하면 된다.</p>
-<p>只要比这个稍微大一点就行了。</p>
-</li>
-<li><p>이 시게는 건드리기만 하면 열린다.</p>
-<p>这个表只要一碰就会开。</p>
-</li>
-<li><p>한국어 학과 촐업생이기만 하면 된다.</p>
-<p>只要是韩语专业毕业生就可以。</p>
-</li>
-</ul>
+<h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a><font color="#86679E">Appendix</font></h3><p>There are many other automatic metrics for machine trans-<br>lation. A standard tool for automatic evaluation <font color="#86679E">mteval.pl</font>. </p>
+<p>mteval-v13a.pl和NLTK BLEU有什么区别？ </p>
+<p>&gt;&gt;<a href="https://www.coder.work/article/4754029/" target="_blank" rel="noopener">https://www.coder.work/article/4754029/</a></p>
+<p>Some metrics may help human translators/revisors in the process of translation using a translation memory software,by pointing at differences. Comparing such metrics with other automatic metrics was the goal of the <a href="http://www.statmt.org/wmt16/pdf/W16-2302.pdf" target="_blank" rel="noopener">Metrics Shared Task</a> during the WMT 2016 evaluation campaign.</p>
 
       
     
@@ -369,7 +350,7 @@
     
       <div class="post-tags syuanpi fadeInRightShort back-3">
       
-        <a href="/tags/Korean/">Korean</a>
+        <a href="/tags/Notes-for-MTT/">Notes for MTT</a>
       
       </div>
     
@@ -383,16 +364,10 @@
     
   <nav class="article-page">
     
-      <a href="/2020/05/29/Machine%20Translation%20%7C%20Evaluation%20matrics%20/" id="art-left" class="art-left">
-        <span class="next-title">
-          <i class="iconfont icon-left"></i>Machine Translation | Evaluation Matrics
-        </span>
-      </a>
     
-    
-      <a href="/2020/05/20/%E6%84%9B%E3%81%95%E3%82%8C%E3%81%A6%E3%82%8B/" id="art-right" class="art-right">
+      <a href="/2020/05/29/Korean%20grammar%20%7C%20%EA%B0%80%EC%84%A4%20&%20%EC%A1%B0%EA%B1%B4/" id="art-right" class="art-right">
         <span class="prev-title">
-          愛されてる<i class="iconfont icon-right"></i>
+          Korean Grammar | 가설 & 조건 - I<i class="iconfont icon-right"></i>
         </span>
       </a>
     
